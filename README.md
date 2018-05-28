@@ -1,5 +1,5 @@
 # Flasky
-Flask小型社交应用，狗书内容的完整实现。
+Flask小型社交应用，狗书内容的完整实现。  
 改进：
  - 使用flask cli 代替 flask-script
 
