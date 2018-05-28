@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}flasky - 首页{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}
+
+{% block page_content %}
+<div class="row">
+<div class="col-md-12 column">
+    <div class="jumbotron">
+        <h2>
+            你好,
+            {% if current_user.is_authenticated %}
+                {% if current_user.name %}
+                    {{ current_user.name }}
+                {% else %}
+                    {{ current_user.username }}
+                {% endif %}
+            {% else %}
+                您还未登录
+            {% endif %}
+        </h2>
+        {% if current_user.can(Permission.WRITE_ARTICLES) %}
+            <p>点击下方的按钮开始编写你的博客</p>
+            <p><a href="{{ url_for('main.new_post') }}" class="btn btn-primary btn-lg">新建博文</a></p>
+        {% endif %}
+    </div>
+</div>
+</div>
+<div class="post-pills">
+    <ul class="nav nav-pills">
+        <li {% if show_followed_mine==0 %} class="active"{% endif %}><a href="{{ url_for('.show_all') }}">全部留言</a></li>
+        {% if current_user.is_authenticated %}
+        <li {% if show_followed_mine==1 %} class="active"{% endif %}><a href="{{ url_for('.show_followed') }}">我关注的</a></li>
+        <li {% if show_followed_mine==2 %} class="active"{% endif %}><a href="{{ url_for('.show_mine') }}">我的留言</a></li>
+        {% endif %}
+    </ul>
+    {% include '_posts.html' %}
+</div>
+
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, '.index') }}
+</div>
+{% endif %}
+{% endblock %}

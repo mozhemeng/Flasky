@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block title %}Flasky - 图片管理{% endblock %}
+
+{% block page_content %}
+<div class="row clearfix">
+    <div class="col-md-12 column">
+        <div class="page-header">
+            <h1>管理图片</h1>
+        </div>
+        <ul class="nav nav-tabs">
+            <li><a href="{{ url_for('pic.upload_file') }}">上传</a></li>
+            <li><a href="{{ url_for('pic.manage_file') }}">管理</a></li>
+        </ul>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                {% for photo in files_list %}
+                    - {{ photo }}
+                    <a href="{{ url_for('pic.open_file', filename=photo) }}">打开</a>
+                    <a href="{{ url_for('pic.delete_file', filename=photo) }}">删除</a><br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

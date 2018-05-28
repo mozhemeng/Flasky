@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Flasky - 新博文{% endblock %}
+{% block page_content %}
+<div class="page-header">
+    <h1>新博文</h1>
+</div>
+<div>
+    <form method="POST" action="{{ url_for('main.new_post') }}">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.title.label }}
+      {% if form.title.errors %}
+        {% for e in form.title.errors %}
+          <p class="help-block">{{ e }}</p>
+        {% endfor %}
+      {% endif %}
+      {{ form.title(class_='form-control') }}
+    </div>
+    <div class="form-gruop">
+      {{ form.body.label }}
+      {% if form.body.errors %}
+        {% for e in form.body.errors %}
+          <p class="help-block">{{ e }}</p>
+        {% endfor %}
+      {% endif %}
+      {{ form.body(id="editor", class_='form-contril') }}
+    </div>
+    <input class="btn btn-primary" type="submit" value="提交">
+  </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('editor');
+</script>
+{% endblock %}

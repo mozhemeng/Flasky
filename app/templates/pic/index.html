@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block title %}Flasky - 图片上传{% endblock %}
+
+{% block page_content %}
+<div class="row clearfix">
+    <div class="col-md-12 column">
+        <div class="page-header">
+            <h1>上传图片</h1>
+        </div>
+        <ul class="nav nav-tabs">
+            <li><a href="{{ url_for('pic.upload_file') }}">上传</a></li>
+            <li><a href="{{ url_for('pic.manage_file') }}">管理</a></li>
+        </ul>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <form class="form form-horizontal" method="POST" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    {{ wtf.form_field(form.photo, multiple="multiple") }}
+                    {{ wtf.form_field(form.submit) }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
