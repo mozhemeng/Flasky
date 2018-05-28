@@ -6,15 +6,15 @@ Flask小型社交应用，狗书内容的完整实现。
 ## Get start
 **!! Using `python3.6` or later version.**
 ```bash
-$> git clone [this project]
+$ git clone [this project]
 ```
 
 ## Commands
-```
-$> flask --help
+```bash
+$ flask --help
 ```
 
-## create and edit .env
+## Create and edit .env
 ```
 DEV_DATABASE_URL=
 FLASKY_ADMIN=
@@ -23,12 +23,12 @@ MAIL_USERNAME=
 MAIL_PASSWORD=
 ```
 
-## Create Database and basic roles
-```
-$> flask deploy
+## Create database and basic roles
+```bash
+$ flask deploy
 ```
 
-## Database Migration
+## Database migration
 ```bash
 $ # do it only if no `migrations` folder under your project folder
 $ flask db init
