@@ -1,7 +1,8 @@
 # Flasky
-Flask小型社交应用，狗书内容的完整实现。  
-改进：
- - 使用flask cli 代替 flask-script
+A small SNS build by Flask and MySQL, Reference:<< Flask Web Development: Developing Web Application With Python >>
+Improvement:
+ - Use Flask CLI instead of Flask-Script
+ - Use .env file to export environment variables
 
 ## Get start
 **!! Using `python3.6` or later version.**
@@ -37,4 +38,12 @@ $ flask db migrate
 $ # do it so database is upgraded with your changes of models
 $ flask db upgrade
 $ flask db --help
+```
+
+## Run app
+```bash
+$ # use flask cli
+$ flask run
+$ # use gunicorn
+$ gunicorn -w 4 -b 0.0.0.0:5000 manage:app
 ```
