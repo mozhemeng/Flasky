@@ -17,11 +17,12 @@ $ flask --help
 
 ## Create and edit .env
 ```
-DEV_DATABASE_URL=
-FLASKY_ADMIN=
-MAIL_SERVER=
-MAIL_USERNAME=
-MAIL_PASSWORD=
+DEV_DATABASE_URL=mysql+pymysql://username:password@localhost:3306/flasky?charset=utf8mb4
+FLASKY_ADMIN=admin email address
+FLASKY_MAIL_SENDER='Flasky <admin email address>'
+MAIL_SERVER=smtp server for your admin email
+MAIL_USERNAME=admin email address
+MAIL_PASSWORD=admin email address password
 ```
 
 ## Create database and basic roles

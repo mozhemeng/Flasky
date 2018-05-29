@@ -11,7 +11,7 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'Do not tell anyone'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     FLASKY_MAIL_SUBJECT_PREFIX = '[Flasky]'
-    FLASKY_MAIL_SENDER = 'Flasky <your email address>'
+    FLASKY_MAIL_SENDER = os.environ.get('FLASKY_MAIL_SENDER')
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
     FLASKY_POST_PER_PAGE = 20
     FLASKY_FOLLOWERS_PER_PAGE = 10
